@@ -47,12 +47,12 @@ projection = ccrs.EquidistantConic(central_longitude=-108.842926, central_latitu
 fig = plt.figure(dpi=300, figsize = (10,10))
 ax = fig.add_subplot(1, 1, 1, projection=projection)  
 v = Viz(ax, sp_graph, projection=projection, edge_width=.5, 
-        edge_alpha=1, sample_pt_size=10, 
+        edge_alpha=1, edge_zorder=100, sample_pt_size=10, 
         obs_node_size=7.5, sample_pt_color="black", 
         cbar_font_size=10)
 v.draw_map()
 v.draw_samples()
-v.draw_edges(use_weights=False)
+v.draw_edges(use_weights=True)
 v.draw_obs_nodes(use_ids=False)
 plt.savefig("map.png")
 
@@ -60,8 +60,8 @@ plt.savefig("map.png")
 sp_graph.fit(lamb = 2.0)
 fig = plt.figure(dpi=300, figsize = (10,10))
 ax = fig.add_subplot(1, 1, 1, projection=projection)  
-v = feems.Viz(ax, sp_graph, projection=projection, edge_width=.5, 
-        edge_alpha=1, sample_pt_size=20, 
+v = Viz(ax, sp_graph, projection=projection, edge_width=.5, 
+        edge_alpha=1, edge_zorder=100, sample_pt_size=20, 
         obs_node_size=7.5, sample_pt_color="black", 
         cbar_font_size=10)
 v.draw_map()
