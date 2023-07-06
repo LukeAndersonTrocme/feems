@@ -67,5 +67,5 @@ v = Viz(ax, sp_graph, projection=projection, edge_width=.5,
 v.draw_map()
 v.draw_edges(use_weights=True)
 v.draw_obs_nodes(use_ids=False) 
-v.draw_edge_colorbar()
+#v.draw_edge_colorbar()
 plt.savefig("mig_surface.png")
