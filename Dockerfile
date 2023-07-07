@@ -56,14 +56,11 @@ RUN mamba create -y -n feems_env -c conda-forge -c bioconda -c defaults \
     cartopy=0.18.0 \
     matplotlib=3.4.3
 
-# Set up .bashrc for auto activation of the environment
-RUN echo "conda activate feems_env" > ~/.bashrc
-
 # Install pip packages in the created environment
-RUN /bin/bash -c "source activate feems_env && pip install --no-cache-dir scikit-sparse"
+RUN /opt/conda/envs/feems_env/bin/pip install --no-cache-dir scikit-sparse
 
 # Install feems from the GitHub repository
-RUN /bin/bash -c "source activate feems_env && pip install --no-cache-dir git+https://github.com/NovembreLab/feems"
+RUN /opt/conda/envs/feems_env/bin/pip install --no-cache-dir git+https://github.com/NovembreLab/feems
 
-# Command to keep the container running
-CMD ["tail", "-f", "/dev/null"]
+# Command to start shell with conda environment Python interpreter
+CMD ["/bin/bash", "-c", "/opt/conda/envs/feems_env/bin/python && tail -f /dev/null"]
