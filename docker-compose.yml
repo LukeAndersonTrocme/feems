@@ -1,6 +1,11 @@
 version: '3'
 services:
   feems:
-    image: ghcr.io/lukeandersontrocme/feems:main
+    container_name: feems
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ./input_data:/input_data
+      - ./feems:/src/feems
+      - ./input_data:/feems/input_data
+    command: tail -f /dev/null

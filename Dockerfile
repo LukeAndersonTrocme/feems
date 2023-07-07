@@ -1,8 +1,8 @@
 # Use miniconda3 as the base image
 FROM continuumio/miniconda3:4.10.3
 
-# Set the working directory in the container to /feems
-WORKDIR /feems
+# Set the working directory in the container to /src
+WORKDIR /src
 
 # Add contents into container
 COPY . .
@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade pip --no-cache-dir
 
 # Install mamba in the base environment
+RUN conda install libarchive -n base -c conda-forge
 RUN conda install -c conda-forge mamba
 
 # Create a new conda environment and install packages
@@ -64,5 +65,5 @@ RUN /bin/bash -c "source activate feems_env && pip install --no-cache-dir scikit
 # Install feems from the GitHub repository
 RUN /bin/bash -c "source activate feems_env && pip install --no-cache-dir git+https://github.com/NovembreLab/feems"
 
-# Entry point to keep the container running
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+# Command to keep the container running
+CMD ["tail", "-f", "/dev/null"]
