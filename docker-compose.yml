@@ -7,5 +7,4 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./feems:/src/feems
-      - ./input_data:/feems/input_data
     command: tail -f /dev/null
