@@ -10,7 +10,7 @@ This is a fork of [feems](https://github.com/NovembreLab/feems) made to work in 
   - [Prerequisites](#prerequisites)
   - [Makefile](#makefile)
 
-# What to expect
+## What to expect
 
 **F**ast **E**stimation of **E**ffective **M**igration **S**urfaces (`feems`) is a python package
 implementing a statistical method for inferring and visualizing gene-flow in
@@ -22,20 +22,20 @@ to help construct the spatial graphs.
 
 For details on the method see our [pre-print](https://www.biorxiv.org/content/10.1101/2020.08.07.242214v1). Note that `feems` is in review so the method could be subject to change.
 
-# Folder structure
+## Folder structure
 
 Add stuff about the folders
 
-# Run it
+## Run it
 
-## Prerequisites
+### Prerequisites
 
 - [Docker and docker-compose](https://docs.docker.com/get-docker/)
 - Makefile
 
 > Note: for Windows users make can be install with [choco](https://community.chocolatey.org/packages/make)
 
-## Makefile
+### Makefile
 
 The Makefile allows for an easier experience to get things running.
 
