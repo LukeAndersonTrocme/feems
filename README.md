@@ -1,96 +1,53 @@
+# feems in docker
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/NovembreLab/feems/main)
+This is a fork of [feems](https://github.com/NovembreLab/feems) made to work in Docker on any envrionement with minimal setup and configuration.
 
-# feems
+## Table of contents
 
-**F**ast **E**stimation of **E**ffective **M**igration **S**urfaces (`feems`) is a python package 
-implementing a statistical method for inferring and visualizing gene-flow in 
-spatial population genetic data.
+- [What to expect](#what-to-expect)
+- [Folder structure](#folder-structure)
+- [Run it](#run-it)
+  - [Prerequisites](#prerequisites)
+  - [Makefile](#makefile)
 
-The `feems` method and software was developed by Joe Marcus and Wooseok Ha and 
-advised by Rina Foygel Barber and John Novembre. We also used code from Benjamin M. Peter 
-to help construct the spatial graphs. 
+# What to expect
 
-For details on the method see our [pre-print](https://www.biorxiv.org/content/10.1101/2020.08.07.242214v1). Note that `feems` is in review so the method could be subject to change.  
+**F**ast **E**stimation of **E**ffective **M**igration **S**urfaces (`feems`) is a python package
+implementing a statistical method for inferring and visualizing gene-flow in
+spatial population genetic data.<br/>
 
-Note: MS Windows users will struggle to install feems directly in a 
-Windows environment because at least one of the dependencies does not
-have a Windows port.  A virtual Linux machine should be preferable if 
-you are on a Windows machine. 
+The `feems` method and software was developed by Joe Marcus and Wooseok Ha and
+advised by Rina Foygel Barber and John Novembre. We also used code from Benjamin M. Peter
+to help construct the spatial graphs.
 
-# Quick start using bioconda
+For details on the method see our [pre-print](https://www.biorxiv.org/content/10.1101/2020.08.07.242214v1). Note that `feems` is in review so the method could be subject to change.
 
-Typically the simplest way to get started with feems is to install 
-[Anaconda][anaconda] or [Miniconda][miniconda], 
-then install feems using the [Bioconda recipe][bioconda-recipe]:
+# Folder structure
 
-```bash
-conda install -c bioconda feems -c conda-forge
+Add stuff about the folders
+
+# Run it
+
+## Prerequisites
+
+- [Docker and docker-compose](https://docs.docker.com/get-docker/)
+- Makefile
+
+> Note: for Windows users make can be install with [choco](https://community.chocolatey.org/packages/make)
+
+## Makefile
+
+The Makefile allows for an easier experience to get things running.
+
+To run the project:
+
+```sh
+make run
 ```
+> This will start the docker container for you
 
-See the next section for alternative ways to install feems, or if 
-"conda install" worked for you, skip ahead to "Running feems". 
+To help with debugging:
 
-# Alternative installation instructions (Python 3.8)
-
-As an alternative way to get started, setup a `conda` 
-environment:
-
+```sh
+make shell
 ```
-conda create -n=feems_e python=3.8.3 
-conda activate feems_e
-```
-
-Some of the plotting utilities in the `feems` package require `geos` as a 
-dependency which can be installed on mac with brew as follows:
-
-```
-brew install geos
-```
-
-Unfortunately some of the other dependencies for `feems` are not easily 
-installed by pip so we recommend getting started using `conda`:
-
-```
-conda install numpy==1.22.3 scipy==1.5.0 scikit-learn==0.23.1
-conda install matplotlib==3.2.2 pyproj==2.6.1.post1 networkx==2.4.0 
-conda install shapely==1.7.1 
-conda install fiona
-conda install pytest==5.4.3 pep8==1.7.1 flake8==3.8.3
-conda install click==7.1.2 setuptools pandas-plink
-conda install msprime==1.0.0 statsmodels==0.12.2 PyYAML==5.4.1
-conda install xlrd==2.0.1 
-conda install openpyxl==3.0.7
-conda install suitesparse=5.7.2
-conda install scikit-sparse=0.4.4 
-conda install cartopy=0.18.0
-```
-
-Jupyter and jupyterlab are also needed to explore some example notebooks but these 
-are not necessary for the `feems` package. 
-
-Once the `conda` environment has 
-been setup with these tricky dependencies we can install `feems`:
-
-```
-pip install git+https://github.com/NovembreLab/feems
-```
-
-You can also install `feems` locally by:
-
-```
-git clone https://github.com/NovembreLab/feems
-cd feems/
-pip install .
-```
-NOTE: Some users have reported a compatibility error arising at this step with the installation of shapely v1.7.1 (specificed in requirements.txt).  If this arises, recreate the `feems_e` conda environment, and run `pip install shapely --no-binary shapely==1.7.1` before the `pip install` feems command above. 
-
-# Running feems
-
-To help get your analysis started, we provide an example workflow in the [getting-started.ipynb](https://github.com/NovembreLab/feems/blob/main/docsrc/notebooks/getting-started.ipynb) notebook. The notebook analyzes empirical data from North American gray wolves populations published in [Schweizer et al. 2015](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.13364?casa_token=idW0quVPOU0AAAAA:o_ll85b8rDbnW3GtgVeeBUB4oDepm9hQW3Y445HI84LC5itXsiH9dGO-QYGPMsuz0b_7eNkRp8Mf6tlW). 
-
-An example workflow using a λ value estimated from a cross-validation procedure is highlighted in [cross-validation.ipynb](https://github.com/NovembreLab/feems/blob/main/docsrc/notebooks/cross-validation.ipynb). We recommend using this procedure in choosing an appropriate λ value for the fit. 
-
-[anaconda]: https://www.anaconda.com/products/distribution
-[miniconda]: https://docs.conda.io
-[bioconda-recipe]: https://anaconda.org/bioconda/feems
