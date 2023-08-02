@@ -7,6 +7,9 @@ WORKDIR /src
 # Add contents into container
 COPY . .
 
+# Create an output directory in the container
+RUN mkdir /src/output
+
 # Install necessary libraries and clean up in one RUN to reduce image size
 RUN apt-get update && apt-get install -y \
     build-essential \
